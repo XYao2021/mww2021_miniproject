@@ -135,13 +135,14 @@ node_types = [
     ("d430", "Emulab, d430"),
     ("d740", "Emulab, d740"),
 ]
-# pc.defineParameter(
-#     name="cn_nodetype",
-#     description="Type of compute node to use for CN node (if included)",
-#     typ=portal.ParameterType.STRING,
-#     defaultValue=node_types[0],
-#     legalValues=node_types
-# )
+
+pc.defineParameter(
+    name="cn_nodetype",
+    description="Type of compute node to use for CN node (if included)",
+    typ=portal.ParameterType.STRING,
+    defaultValue=node_types[0],
+    legalValues=node_types
+)
 
 pc.defineParameter(
     name="oai_ran_commit_hash",
