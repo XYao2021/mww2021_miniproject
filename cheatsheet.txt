@@ -1,0 +1,21 @@
+# on cn5g node (e.g., cn5g-ustar)
+
+## watch amf.log (if one of the services crashes, you'll see a bunch of log
+## messages saying the AMF can't reach them.)
+tail -f /var/log/open5gs/amf.log
+
+## restart core; should rarely crash.
+/local/repository/bin/restart-cn.sh
+
+
+# on gnb node (e.g., gnd-ustar)
+
+## start gnb; this one will likely crash a lot during the activity. after this
+## happens, wait until all UEs are in airplane mode, then restart. (boots on the
+## ground will say when UEs are ready)
+sudo /var/tmp/oairan/cmake_targets/ran_build/build/nr-softmodem -E \
+  -O /var/tmp/etc/oai/gnb.sa.band77.fr1.106PRB.usrpb210.conf \
+  --gNBs.[0].servingCellConfigCommon.[0].physCellId 1 \
+  --sa \
+  -d
+
